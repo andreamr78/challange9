@@ -89,7 +89,7 @@ class WeatherService {
     const date = new Date(response.list[0].dt * 1000).toLocaleDateString();
     const icon = response.list[0].weather[0].icon;
     const iconDescription = response.list[0].weather[0].description;
-    const tempF = ((response.list[0].main.temp - 273.15) * 9) / 5 + 32;
+    const tempF = Math.round(((response.list[0].main.temp - 273.15) * 9) / 5 + 32);
     const windSpeed = response.list[0].wind.speed;
     const humidity = response.list[0].main.humidity;
     return new Weather(city, date, icon, iconDescription, tempF, windSpeed, humidity);
@@ -104,7 +104,7 @@ class WeatherService {
       const date = new Date(weatherData[i].dt * 1000).toLocaleDateString();
       const icon = weatherData[i].weather[0].icon;
       const iconDescription = weatherData[i].weather[0].description;
-      const tempF = ((weatherData[i].main.temp - 273.15) * 9) / 5 + 32; // Convert temperature to Fahrenheit
+      const tempF = Math.round(((weatherData[i].main.temp - 273.15) * 9) / 5 + 32); // Convert temperature to Fahrenheit
       const windSpeed = weatherData[i].wind.speed;
       const humidity = weatherData[i].main.humidity;
 
